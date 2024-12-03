@@ -260,6 +260,8 @@ require('lazy').setup({
     },
   },
 
+  { 'github/copilot.vim' },
+
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -923,4 +925,12 @@ require('lazy').setup({
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- change tabbing behaviour
+vim.o.ts = 2
+vim.o.sts = 2
+vim.o.sw = 2
+vim.o.et = true
+
+-- remap <C-J> for copilot tab complete options
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
+vim.g.copilot_no_tab_map = true
